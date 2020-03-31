@@ -11,40 +11,40 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Search from '@material-ui/icons/Search';
 
 class SearchHeader extends Component {
-    searchBooks = debounce(event => {
-        const value = event.target.value.trim()
-        this.props.searchBooks(value)
-    }, 200)
+  searchBooks = debounce(event => {
+    const value = event.target.value.trim()
+    this.props.searchBooks(value)
+  }, 200)
 
-    render() {
-        return (
-            <AppBar color="transparent" position="fixed">
-                <Toolbar>
-                    <Link to="/">
-                        <IconButton aria-label="search" color="inherit">
-                            <ArrowBackIcon />
-                        </IconButton>
-                    </Link>
-                    <FormControl fullWidth>
-                        <TextField 
-                            id="search-input" 
-                            label="Search a Book"
-                            onChange={
-                                (event)=>{event.persist(); this.searchBooks(event)}
-                              }
-                            InputProps={{
-                                endAdornment: (
-                                <InputAdornment position="start">
-                                    <Search />
-                                </InputAdornment>
-                                ),
-                            }}                   
-                        />
-                    </FormControl>
-                </Toolbar>
-            </AppBar>
-        )
-    }
+  render() {
+    return (
+      <AppBar color="transparent" position="fixed">
+        <Toolbar>
+          <Link to="/">
+            <IconButton aria-label="search" color="inherit">
+              <ArrowBackIcon />
+            </IconButton>
+          </Link>
+          <FormControl fullWidth>
+            <TextField
+              id="search-input"
+              label="Search a Book"
+              onChange={
+                (event) => { event.persist(); this.searchBooks(event) }
+              }
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </FormControl>
+        </Toolbar>
+      </AppBar>
+    )
+  }
 }
 
 export default SearchHeader

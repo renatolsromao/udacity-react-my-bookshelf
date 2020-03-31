@@ -16,24 +16,24 @@ class SearchPage extends Component {
             }))
         } else {
             BooksApi.search(title)
-            .then((searchBooks) => {
-                searchBooks = searchBooks.length > 0  ? searchBooks : []
-                this.setState(() => ({
-                    searchBooks
-                }))
-            })
+                .then((searchBooks) => {
+                    searchBooks = searchBooks.length > 0 ? searchBooks : []
+                    this.setState(() => ({
+                        searchBooks
+                    }))
+                })
         }
     }
-    
+
     render() {
         return (
             <div>
                 <SearchHeader searchBooks={this.searchBooks} />
-                <Shelf 
+                <Shelf
                     name='Search Result'
-                    books={this.state.searchBooks} 
+                    books={this.state.searchBooks}
                     shelvesBooks={this.props.shelvesBooks}
-                    updateBookShelf={this.props.updateBookShelf} 
+                    updateBookShelf={this.props.updateBookShelf}
                 />
             </div>
         )

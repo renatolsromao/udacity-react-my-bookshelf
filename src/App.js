@@ -18,16 +18,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-      this.getBooksOnShelves()
+    this.getBooksOnShelves()
   }
 
   getBooksOnShelves = () => {
     BooksApi.getAll()
       .then((shelvesBooks) => {
-        shelvesBooks = shelvesBooks.length > 0  ? shelvesBooks : []
-          this.setState(() => ({
-            shelvesBooks
-          }))
+        shelvesBooks = shelvesBooks.length > 0 ? shelvesBooks : []
+        this.setState(() => ({
+          shelvesBooks
+        }))
       })
   }
 
@@ -42,13 +42,13 @@ class App extends Component {
     const { classes } = this.props
 
     const MainPageComponent = (
-      <MainPage 
+      <MainPage
         shelvesBooks={this.state.shelvesBooks}
         updateBookShelf={this.updateBookShelf}
       />
     )
     const SearchPageComponent = (
-      <SearchPage 
+      <SearchPage
         shelvesBooks={this.state.shelvesBooks}
         updateBookShelf={this.updateBookShelf}
       />
