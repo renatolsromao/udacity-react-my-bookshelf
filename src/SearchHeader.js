@@ -13,9 +13,7 @@ import Search from '@material-ui/icons/Search';
 class DefaultHeader extends Component {
     searchBooks = debounce(event => {
         const value = event.target.value.trim()
-        if ( value.length > 3 ) {
-            this.props.searchBooks(value)
-        }
+        this.props.searchBooks(value)
     }, 300)
 
     render() {

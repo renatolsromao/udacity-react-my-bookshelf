@@ -7,6 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import BookShelfButton from './BookShelfButton'
 
+const genericBookThumbnail = 'https://rmnetwork.org/newrmn/wp-content/uploads/2011/11/generic-book-cover.jpg'
+
 const styles = theme => ({
     bookCard: {
         height: '100%',
@@ -21,12 +23,13 @@ const styles = theme => ({
 class Book extends Component {
     render() {
         const { classes, data, shelf } = this.props
+        const thumbnailLink = data.imageLinks !== undefined ? data.imageLinks.thumbnail : genericBookThumbnail
 
         return (
             <Card className={classes.bookCard}>
                 <CardMedia
                     style={{paddingTop: '100%'}}
-                    image={data.imageLinks.thumbnail}
+                    image={thumbnailLink}
                     title={data.title}
                 />
                 <CardContent>
