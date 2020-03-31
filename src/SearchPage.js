@@ -7,17 +7,22 @@ import * as BooksApi from './services/BooksApi'
 class SearchPage extends Component {
     state = {
         searchBooks: [],
-        q: ''
     }
 
     searchBooks = (title) => {
-        BooksApi.search(title)
+        if (title === "") {
+            this.setState(() => ({
+                searchBooks: []
+            }))
+        } else {
+            BooksApi.search(title)
             .then((searchBooks) => {
                 searchBooks = searchBooks.length > 0  ? searchBooks : []
                 this.setState(() => ({
                     searchBooks
                 }))
             })
+        }
     }
     
     render() {
@@ -25,7 +30,7 @@ class SearchPage extends Component {
             <div>
                 <SearchHeader searchBooks={this.searchBooks} />
                 <Shelf 
-                    name='Books Search'
+                    name='Search Result'
                     books={this.state.searchBooks} 
                     shelvesBooks={this.props.shelvesBooks}
                     updateBookShelf={this.props.updateBookShelf} 

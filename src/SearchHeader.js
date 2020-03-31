@@ -10,11 +10,11 @@ import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Search from '@material-ui/icons/Search';
 
-class DefaultHeader extends Component {
+class SearchHeader extends Component {
     searchBooks = debounce(event => {
         const value = event.target.value.trim()
         this.props.searchBooks(value)
-    }, 300)
+    }, 200)
 
     render() {
         return (
@@ -47,4 +47,4 @@ class DefaultHeader extends Component {
     }
 }
 
-export default DefaultHeader
+export default SearchHeader
